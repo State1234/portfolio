@@ -1,37 +1,80 @@
-const projects = [
-    { 
-        title: 'Rng Inventory system', 
-        file: 'Screen Recording 2026-06-03 153556.mp4',
-        desc: 'A complete aura rolling framework featuring dynamic overhead titles, an active inventory manager, custom prompt configurations, and full deletion confirmation security.' 
-    },
-    { 
-        title: 'Data Store System', 
-        file: 'Screen Recording 2026-06-04 163917.mp4',
-        desc: 'Secure and optimized data persistence tracking player statistics, currencies, and inventories across multiple game sessions seamlessly.' 
-    },
-    { 
-        title: 'RNG System', 
-        file: 'Screen Recording 2026-05-29 205534.mp4',
-        desc: 'RNG system with a smooth menu, clean animations, and satisfying sound effects for a polished player experience.' 
-    },
-    { 
-        title: 'Admin script', 
-        file: 'Screen Recording 2026-05-02 223138.mp4', 
-        desc: 'Secure admin panel featuring global messaging, ban/kick functionality, and developer tools restricted to authorized users.' 
-    },
-    { 
-        title: 'Shop system with obby stages!', 
-        file: 'Screen Recording 2026-04-04 231918 (1).mp4', 
-        desc: 'Strategic sacrifice mechanic: trade earned obby stages for powerful items and permanent upgrades.' 
-    },
-    { 
-        title: 'Color changing obby', 
-        file: 'Color change.mp4', 
-        desc: 'Interactive checkpoints with SFX, stage tracking via leaderstats, and dynamic "deadly color" UI indicators.' 
-    },
-    { 
-        title: 'Game passes', 
-        file: 'Screen Recording 2026-05-02 211551.mp4', 
-        desc: 'Comprehensive game pass suite featuring Speed Coil, Jump Coil, Kill All, and Skip Stage mechanics with real-time feedback.' 
+<script>
+    const projects = [
+        { 
+            title: 'Rng Inventory system', 
+            file: 'Screen Recording 2026-06-03 153556.mp4',
+            desc: 'A complete aura rolling framework featuring dynamic overhead titles, an active inventory manager, custom prompt configurations, and full deletion confirmation security.' 
+        },
+        { 
+            title: 'Data Store System', 
+            file: 'Screen Recording 2026-06-04 163917.mp4',
+            desc: 'Secure and optimized data persistence tracking player statistics, currencies, and inventories across multiple game sessions seamlessly.' 
+        },
+        { 
+            title: 'RNG System', 
+            file: 'Screen Recording 2026-05-29 205534.mp4',
+            desc: 'RNG system with a smooth menu, clean animations, and satisfying sound effects for a polished player experience.' 
+        },
+        { 
+            title: 'Admin script', 
+            file: 'Screen Recording 2026-05-02 223138.mp4', 
+            desc: 'Secure admin panel featuring global messaging, ban/kick functionality, and developer tools restricted to authorized users.' 
+        },
+        { 
+            title: 'Shop system with obby stages!', 
+            file: 'Screen Recording 2026-04-04 231918 (1).mp4', 
+            desc: 'Strategic sacrifice mechanic: trade earned obby stages for powerful items and permanent upgrades.' 
+        },
+        { 
+            title: 'Color changing obby', 
+            file: 'Color change.mp4', 
+            desc: 'Interactive checkpoints with SFX, stage tracking via leaderstats, and dynamic "deadly color" UI indicators.' 
+        },
+        { 
+            title: 'Game passes', 
+            file: 'Screen Recording 2026-05-02 211551.mp4', 
+            desc: 'Comprehensive game pass suite featuring Speed Coil, Jump Coil, Kill All, and Skip Stage mechanics with real-time feedback.' 
+        }
+    ];
+
+    const pricing = [
+        { title: 'Small System', price: '1.5k—2.5k R$', desc: 'Single mechanics, tools, or small UI scripts.' },
+        { title: 'Full System', price: '6k—10k R$', desc: 'Complete inventory, data stores, or round systems.' },
+        { title: 'Gameplay Loop', price: '12k+ R$', desc: 'End-to-end game logic from lobby to gameplay.' }
+    ];
+
+    const projectsGrid = document.getElementById('projectsGrid');
+    if (projectsGrid) {
+        projectsGrid.innerHTML = ''; // Clears the grid safely
+        projects.forEach(p => {
+            projectsGrid.innerHTML += `
+                <div class="group bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-xl transition duration-300">
+                    <a href="${p.file}" target="_blank" class="block aspect-video bg-black relative overflow-hidden cursor-pointer">
+                        <video src="${p.file}" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause(); this.currentTime = 0;"></video>
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/0 transition">
+                            <i data-lucide="play" class="text-white w-10 h-10 drop-shadow-lg"></i>
+                        </div>
+                    </a>
+                    <div class="p-6 text-left">
+                        <h3 class="font-bold text-lg mb-2 text-gray-900">${p.title}</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">${p.desc}</p>
+                    </div>
+                </div>`;
+        });
     }
-];
+
+    const pricingGrid = document.getElementById('pricingGrid');
+    if (pricingGrid) {
+        pricingGrid.innerHTML = ''; // Clears the grid safely
+        pricing.forEach(p => {
+            pricingGrid.innerHTML += `
+                <div class="p-8 bg-white rounded-3xl border border-gray-100 hover:border-blue-300 transition group text-center">
+                    <h3 class="text-sm font-bold text-blue-600 uppercase tracking-widest mb-4">${p.title}</h3>
+                    <p class="text-3xl font-800 mb-4">${p.price}</p>
+                    <p class="text-gray-500 text-sm">${p.desc}</p>
+                </div>`;
+        });
+    }
+
+    lucide.createIcons();
+</script>
